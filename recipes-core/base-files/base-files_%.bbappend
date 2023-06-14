@@ -1,1 +1,2 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend:sam9x60 := "${THISDIR}/files:"
+

@@ -1,6 +1,4 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
-FILESEXTRAPATHS:prepend := "${THISDIR}/files/envs:"
-SRC_URI:append = " file://envs/"
 
 SRC_URI:append = " \
     file://fw_env.config \

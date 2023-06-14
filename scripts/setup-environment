@@ -147,13 +147,15 @@ VIRTUAL-RUNTIME_initscripts = ""
 
 IMAGE_FSTYPES = "wic.bz2"
 SDIMG_ROOTFS_TYPE="ext4"
-WKS_FILE = "sdimage.wks"
+WKS_FILE:sam9x60ek-sd = "sdimage-A-B.wks"
+DISTRO_FEATURES:append = " rauc"
+IMAGE_INSTALL:append = " u-boot-fw-utils"
 
 DL_DIR ?= "\${BSPDIR}/downloads/"
 SSTATE_DIR ?= "\${BSPDIR}/sstate-cache/"
 RM_OLD_IMAGE = "1"
-BB_NUMBER_THREADS = "8"
-PARALLEL_MAKE = "-j 8"
+BB_NUMBER_THREADS = "12"
+PARALLEL_MAKE = "-j 12"
 INHERIT += "rm_work"
 
 EOF
@@ -162,7 +164,7 @@ EOF
         -e "s,SDKMACHINE ??=.*,SDKMACHINE ??= '$SDKMACHINE',g" \
         -i conf/local.conf
 
-    TEMPLATES=$CWD/sources/meta-rauc-community/meta-rauc-atmel/conf
+    TEMPLATES=$CWD/sources/meta-sam9x/conf
     cp $TEMPLATES/bblayers.conf conf/
 
     generated_config=1
